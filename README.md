@@ -17,9 +17,15 @@
 # GIFCompressor
 
 An Android tool to compress GIF files into the MP4 format, using hardware-accelerated Android codecs available on the device. Works on API 18+.
+```
+repositories {
+  mavenCentral()
+  maven { url "https://jitpack.io" }
+}
+```
 
 ```groovy
-implementation 'com.otaliastudios.gif:compressor:1.0.0'
+implementation 'com.github.numandev1:GIFCompressor:69a872db86'
 ```
 
 - Fast compression to lightweight MP4 (AVC)
