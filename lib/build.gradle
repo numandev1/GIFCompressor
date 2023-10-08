@@ -1,6 +1,21 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.otaliastudios.gif'
+            artifactId = 'compressor'
+            version = "1.0.0"
+
+            pom {
+                description = 'A description of my library'
+            }
+        }
+    }
+}
 
 ext {
     libVersion = '1.0.0'
@@ -32,7 +47,7 @@ android {
 
 dependencies {
     api "com.github.bumptech.glide:glide:4.9.0"
-    api "com.otaliastudios.opengl:egloo:0.4.0"
+    api "com.github.numandev1.Egloo:egloo:2c13ab28ca"
     api "androidx.annotation:annotation:1.1.0"
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
@@ -79,7 +94,7 @@ if (System.getenv('TRAVIS') == 'true') {
     hasBintray = true
 } else {
     Properties props = new Properties()
-    props.load(project.rootProject.file('local.properties').newDataInputStream())
+    // props.load(project.rootProject.file('local.properties').newDataInputStream())
     bintrayUser = props.getProperty('bintray.user')
     bintrayKey = props.get('bintray.key')
     hasBintray = true
